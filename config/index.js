@@ -8,7 +8,7 @@ module.exports = {
     output: {// 输出文件
         publicPath: __dirname + '/build',// 添加静态资源，否则会出现路径错误
         path: __dirname + '/build',// 输出文件路径
-        filename: '[name]-[hash].js' // 输出文件名,(实现合理缓存)webpack可以把一个哈希值添加到打包的文件名中，使用方法如下,添加特殊的字符串混合体（[name], [id] and [hash]）到输出文件名前
+        filename: '[name].js' // 输出文件名,(实现合理缓存)webpack可以把一个哈希值添加到打包的文件名中，使用方法如下,添加特殊的字符串混合体（[name], [id] and [hash]）到输出文件名前
     },
     module:{// 加载器
         rules: [ //query：为loaders提供额外的设置选项（可选）
@@ -49,9 +49,12 @@ module.exports = {
     devtool: 'eval-source-map', // 调试，webpack打包时生成的source maps，提供了一种对应编译文件和源文件的方法，容易调试。
     // devtool: 'null'   //注意修改了这里，这能大大压缩我们的打包代码
     devServer: {
+        env: {
+            NODE_ENV: '"development"'
+        },
         contentBase: __dirname, //本地服务器所加载的页面所在的目录
         historyApiFallback: true, //在开发单页应用时非常有用，它依赖于HTML5 history API，如果设置为true，所有的跳转将指向index.html
-        port: 3000,
+        port: 8080,
         inline: true, // 实时刷新
         hot: true,
         proxy: { // 请求代理
@@ -72,7 +75,7 @@ module.exports = {
         }),
         new ExtractTextPlugin('style.css'), // 分离CSS和JS文件
         new OpenBrowserWebpackPlugin({ // 打开浏览器
-            url: 'http://localhost:3000'
+            url: 'http://localhost:8080'
         })
     ]
 

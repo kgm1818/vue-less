@@ -4,8 +4,8 @@ const OpenBrowserWebpackPlugin = require('open-browser-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 module.exports = {
-    mode: "none", // 设置为 none，避免 development 或 production 默认设置的一些影响
-    entry: "./src/main.js",// 入口文件
+    // mode: "development", // 设置为 none，避免 development 或 production 默认设置的一些影响
+    entry: "../src/main.js",// 入口文件
     output: {// 输出文件
         publicPath: __dirname + '/build',// 添加静态资源，否则会出现路径错误
         path: __dirname + '/build',// 输出文件路径
